@@ -143,7 +143,7 @@ def winner
   else
     winning_array = won?
     index = winning_array[0]
-    if board[winning_array[0]] == "X"
+    if @board[winning_array[0]] == "X"
       return "X"
     else
       return "O"
