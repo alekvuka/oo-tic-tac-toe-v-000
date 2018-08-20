@@ -1,8 +1,8 @@
 class TicTacToe
 
 def initialize(board = Array.new(9, " "))
-  @board = board 
-end 
+  @board = board
+end
 
 def display_board
   puts " #{board[0]} | #{board[1]} | #{board[2]} "
@@ -36,20 +36,20 @@ def valid_move?(index)
   else
     within_index = false
   end
-  
+
   if position_taken?(index) == true
     occupied = true
   else
     occupied = false
   end
-  
+
   if within_index == true && occupied == false
     return true
   else
     return false
   end
 
-end 
+end
 
 
 def turn
@@ -137,9 +137,40 @@ def over?
   end
 end
 
+def winner
+  if won? == false
+    return nil
+  else
+    winning_array = won?
+    index = winning_array[0]
+    if board[winning_array[0]] == "X"
+      return "X"
+    else
+      return "O"
+    end
+  end
+end
+
+def play
+
+until over? == true
+  turn
+end
+
+if draw? == true
+  puts "Cat's Game!"
+elsif winner == "X"
+  puts "Congratulations X!"
+elsif winner == "O"
+  puts "Congratulations O!"
+else
+  puts "Thanks for playing"
+end
+
+end
 
 
 WIN_COMBINATIONS = [[0,1,2],[3,4,5],[6,7,8],[0,4,8],[2,4,6],[0,3,6],[1,4,7],[2,5,8]]
 
 
-end 
+end
